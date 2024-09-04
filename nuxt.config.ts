@@ -1,9 +1,24 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-04-03',
-  devtools: { enabled: true },
+  css: ['@/assets/css/tailwind.css'],
+
+  modules: [
+    '@nuxt/ui',
+    '@nuxt/content'
+  ],
+
+  typescript: {
+    typeCheck: true
+  },
+
   alias: {
     '@': './',
   },
-  css: ['@/assets/css/tailwind.css']
+
+  content: {},
+
+  plugins: [
+    '~/plugins/vue-scrollto.ts'
+  ],
+
+  compatibilityDate: '2024-09-04',
 })
