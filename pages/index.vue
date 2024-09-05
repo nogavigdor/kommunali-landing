@@ -12,7 +12,7 @@
   
       <!-- FAQ Section -->
       <section id="faq" class="my-20">
-        <FAQSection />
+        <FaqSection />
       </section>
   
       <!-- Signup Section -->
