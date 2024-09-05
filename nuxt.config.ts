@@ -17,7 +17,7 @@ export default defineNuxtConfig({
   content: {},
 
   plugins: [
-    '~/plugins/vue-scrollto.ts'
+    '@/plugins/vue-scrollto.ts'
   ],
 
   compatibilityDate: '2024-09-04',
