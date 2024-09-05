@@ -1,7 +1,7 @@
 <template>
     <section class="blog-preview-section">
       <h2 class="text-3xl font-bold mb-6">Latest News</h2>
-      <div v-if="posts" class="blog-list">
+      <div v-if="posts.length" class="blog-list">
         <article v-for="(post, index) in posts" :key="index" class="blog-item">
           <h3 class="text-xl font-semibold">{{ post.title }}</h3>
           <p class="text-gray-600">{{ post.excerpt }}</p>
@@ -14,18 +14,15 @@
     </section>
   </template>
   
-  <script setup lang="ts">
+  <script setup>
   import { ref, onMounted } from 'vue'
-  import { queryContent } from '#content'
-    import type { BlogPost } from '@/types'
-
-const posts = ref<BlogPost[]>([])
+  
+  const posts = ref([])
   
   onMounted(async () => {
-  const postsData = await queryContent<BlogPost>('blog').only(['title', 'excerpt', '_path']).find()
-  posts.value = postsData
-})
-
+    const { data } = await queryContent('blog').only(['title', 'excerpt', '_path']).find()
+    posts.value = data
+  })
   </script>
   
   <style scoped>
