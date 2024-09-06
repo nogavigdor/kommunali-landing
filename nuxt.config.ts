@@ -1,24 +1,17 @@
 export default defineNuxtConfig({
-  css: ['@/assets/css/tailwind.css'],
+  css: ["@/assets/css/tailwind.css"],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
 
-  modules: [
-    '@nuxt/ui',
-    '@nuxt/content'
-  ],
-
+  modules: ["@nuxt/ui", "@nuxt/content"],
   typescript: {
-    typeCheck: true
+    typeCheck: true,
   },
 
-  alias: {
-    '@': './',
-  },
-
-  content: {},
-
-  plugins: [
-    '@/plugins/vue-scrollto.ts'
-  ],
-
-  compatibilityDate: '2024-09-04',
-})
+  plugins: ["@/plugins/vue-scrollto.ts"],
+  compatibilityDate: "2024-09-04",
+});
