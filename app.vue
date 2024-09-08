@@ -1,17 +1,14 @@
 <template>
   <div>
-
     <NavBar />
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
 
-    <NuxtPage />
-    
+    <TheFooter />
   </div>
 </template>
 
-<script setup>
+<script setup></script>
 
-</script>
-
-<style scoped>
-/* Add any global styling here if needed */
-</style>
+<style scoped></style>

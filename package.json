@@ -17,6 +17,7 @@
     "axios": "^1.7.7",
     "nuxt": "^3.13.1",
     "vite": "^5.4.3",
+    "vite-plugin-checker": "^0.8.0",
     "vue": "latest",
     "vue-scrollto": "^2.20.0"
   },

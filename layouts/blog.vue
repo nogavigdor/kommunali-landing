@@ -1,20 +1,8 @@
 <template>
   <div>
-    <header>
-      <h1>My Blog</h1>
-      <nav>
-        <NuxtLink to="/">Home</NuxtLink>
-        <NuxtLink to="/blog">Blog</NuxtLink>
-      </nav>
-    </header>
-
     <main>
-      <NuxtPage />
+      <slot />
     </main>
-
-    <footer>
-      <p>© 2024 My Awesome Blog</p>
-    </footer>
   </div>
 </template>
 
