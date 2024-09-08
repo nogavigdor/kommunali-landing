@@ -1,5 +1,5 @@
 <template>
-  <UAccordion :items="items" />
+  <UAccordion class="min-h-screen" :items="items" />
 </template>
 <script setup lang="ts">
 const items = [

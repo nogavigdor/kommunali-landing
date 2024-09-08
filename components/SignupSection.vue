@@ -1,5 +1,5 @@
 <template>
-    <div class="max-w-lg mx-auto">
+    <div class="min-h-screen max-w-lg mx-auto">
       <h2 class="text-3xl font-bold mb-4">Sign Up for Updates</h2>
       <form @submit.prevent="submitForm">
         <input v-model="form.name" type="text" placeholder="Name" class="w-full mb-4 p-2 border">

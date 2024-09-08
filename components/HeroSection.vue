@@ -1,5 +1,5 @@
 <template>
-    <section class="relative w-full"> 
+    <section class="min-h-screen relative w-full"> 
       <UCarousel 
         ref="carouselRef"
         v-slot="{ item }"
