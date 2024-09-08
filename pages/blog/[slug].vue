@@ -3,7 +3,7 @@
     <article v-if="post && post.body">
       <h1>{{ post.title }}</h1>
       <p>{{ post.excerpt }}</p>
-      <nuxt-content :document="post" />
+      <ContentDoc />
     </article>
     <div v-else>
       <p>No post found.</p>
