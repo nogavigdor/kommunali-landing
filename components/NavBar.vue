@@ -1,5 +1,5 @@
 <template>
-  <nav class="fixed flex justify-between bg-gray-100 py-4 px-6">
+  <nav class="fixed z-50 flex justify-between bg-gray-100 py-4 px-6">
     <!-- Smooth scroll links for sections if on index page -->
     <a
       v-if="!isBlogPage"
@@ -83,37 +83,70 @@ import { useRoute } from "vue-router";
 const currentSection = ref("hero");
 const isBlogPage = ref(false);
 
-onMounted(() => {
-  const route = useRoute();
+const route = useRoute();
+
+const handleScroll = () => {
+  updateScrollLogic();
+};
+
+
+const updateScrollLogic = () => {
+  const navBarHeight = document.querySelector('nav')?.offsetHeight || 0;
 
   // Check if the user is on the blog page
   isBlogPage.value = route.path.startsWith("/blog");
 
   // Scroll event listener to detect active section
-  window.addEventListener("scroll", () => {
-    if (!isBlogPage.value) {
+  if (!isBlogPage.value) {
+    window.addEventListener("scroll", () => {
       const sections = {
         hero: document.getElementById("hero")?.getBoundingClientRect().top ?? 0,
-        about:
-          document.getElementById("about")?.getBoundingClientRect().top ?? 0,
+        about: document.getElementById("about")?.getBoundingClientRect().top ?? 0,
         faq: document.getElementById("faq")?.getBoundingClientRect().top ?? 0,
-        signup:
-          document.getElementById("signup")?.getBoundingClientRect().top ?? 0,
+        signup: document.getElementById("signup")?.getBoundingClientRect().top ?? 0,
       };
 
-      const scrollTop = window.scrollY + 200;
+      const scrollTop = window.scrollY + navBarHeight;
+      const screenHeight = window.innerHeight; 
 
-      if (scrollTop >= sections.hero && scrollTop < sections.about) {
-        currentSection.value = "hero";
-      } else if (scrollTop >= sections.about && scrollTop < sections.faq) {
-        currentSection.value = "about";
-      } else if (scrollTop >= sections.faq && scrollTop < sections.signup) {
-        currentSection.value = "faq";
-      } else if (scrollTop >= sections.signup) {
-        currentSection.value = "signup";
-      }
+        // Logging scroll details
+  console.log('the sections top are:', sections);
+  console.log(`Scroll Position: ${window.scrollY}`);
+  console.log(`Scroll Top (with navbar height): ${scrollTop}`);
+  console.log(`Screen Height: ${screenHeight}`);
+
+  if (sections.hero < navBarHeight && sections.about > navBarHeight) {
+      currentSection.value = "hero";
+      console.log("Active Section: Hero");
+    } else if (sections.about < navBarHeight && sections.faq > navBarHeight) {
+      currentSection.value = "about";
+      console.log("Active Section: About");
+    } else if (sections.faq < navBarHeight && sections.signup > navBarHeight) {
+      currentSection.value = "faq";
+      console.log("Active Section: FAQ");
+    } else if (sections.signup < navBarHeight) {
+      currentSection.value = "signup";
+      console.log("Active Section: Signup");
     }
-  });
+    });
+  }
+};
+
+// Run scroll logic when component is mounted
+onMounted(() => {
+  updateScrollLogic();
+   // Add scroll event listener
+   window.addEventListener("scroll", handleScroll);
+});
+
+// Cleanup scroll listener when component is unmounted
+onBeforeUnmount(() => {
+  window.removeEventListener("scroll", handleScroll);
+});
+
+// Watch for route changes and update scroll logic dynamically
+watch(route, () => {
+  updateScrollLogic();
 });
 </script>
 
