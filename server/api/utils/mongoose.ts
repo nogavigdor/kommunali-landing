@@ -7,8 +7,7 @@ export default async function connectToDatabase() {
 
   try {
     await mongoose.connect(
-      //"mongodb+srv://<username>:<password>@cluster0.mongodb.net/myFirstDatabase",
-      "mongodb+srv://nogavigdor:<Venus999@12>@cluster0.7ozz4.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+      process.env.MONGO_URI || "mongodb://localhost:27017/your-database-name",
       {
         // useNewUrlParser: true,
         // useUnifiedTopology: true,

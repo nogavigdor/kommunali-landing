@@ -1,10 +1,19 @@
 import { defineEventHandler, readBody } from "h3";
 import mongoose from "mongoose";
 
-// MongoDB connection
-mongoose.connect(
-  "mongodb+srv://nogavigdor:<Venus999@12>@cluster0.7ozz4.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-);
+// Ensure MongoDB connection is made once
+if (mongoose.connection.readyState === 0) {
+  console.log("MongoDB URI:", process.env.MONGO_URI);
+  mongoose.connect(
+ 
+
+    process.env.MONGO_URI || "mongodb://localhost:27017/h3",
+    {
+      //useNewUrlParser: true,
+     // useUnifiedTopology: true,
+    }
+  );
+}
 
 // Signup Schema
 const SignupSchema = new mongoose.Schema({
@@ -13,7 +22,8 @@ const SignupSchema = new mongoose.Schema({
   signUpDate: { type: Date, default: Date.now },
 });
 
-const Signup = mongoose.model("Signup", SignupSchema);
+// Model definition
+const Signup = mongoose.models.Signup || mongoose.model("Signup", SignupSchema);
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
@@ -32,9 +42,28 @@ export default defineEventHandler(async (event) => {
     await newSignup.save();
     return { message: "The signup was successful" };
   } catch (error) {
-    return {
-      statusCode: 500,
-      message: "A failed to signup occurred",
-    };
+    // Check if the error is an instance of Error
+    if (error instanceof Error) {
+      console.error("Error during signup:", error.message); // Log the error message for debugging
+
+      let message = "A failed to signup occurred";
+
+      // Check for MongoDB unique constraint errors (e.g., duplicate emails)
+      if (error.message.includes("E11000")) {
+        message = "Email already exists";
+      }
+
+      return {
+        statusCode: 500,
+        message,
+      };
+    } else {
+      // Handle other types of errors that are not instances of Error
+      return {
+        statusCode: 500,
+        message: "An unknown error occurred",
+      };
+    }
   }
 });
+
