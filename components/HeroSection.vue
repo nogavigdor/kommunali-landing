@@ -8,7 +8,7 @@
             class="h-[75vh] rounded-lg overflow-hidden relative"
             indicators
         >
-            <div class="w-full flex items-center justify-center">
+            <div class="w-full flex items-start justify-center">
             <img :src="item" class="w-full h-auto object-contain" draggable="false"> 
             </div>
         </UCarousel>
