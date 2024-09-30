@@ -1,5 +1,5 @@
 <template>
-  <nav class="fixed z-50 flex space-x-6 bg-gray-100 py-4 px-6">
+  <nav class="fixed z-50 flex space-x-12 w-full bg-gray-100 py-4 px-6 font-bold">
     <!-- Smooth scroll links for sections if on index page -->
     <a
       v-if="!isBlogPage"
