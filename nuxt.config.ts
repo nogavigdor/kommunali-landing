@@ -7,7 +7,7 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ["@nuxt/ui", "@nuxt/content", '@nuxt/image',   'nuxt-gtag', ],
+  modules: ["@nuxt/ui", "@nuxt/content", '@nuxt/image',   'nuxt-gtag',  '@nuxtjs/google-analytics' ],
   typescript: {
     typeCheck: true,
   },
@@ -15,7 +15,8 @@ export default defineNuxtConfig({
   plugins: ["@/plugins/vue-scrollto.ts"],
  
   gtag: {
-    id: 'GTM-P22RFRV6', // Replace with your actual Google Tag ID
+    id: 'GTM-P22RFRV6', 
   },
+  
   compatibilityDate: "2024-09-04",
 });
