@@ -1,5 +1,7 @@
 <template>
-  <UAccordion class="min-h-screen" :items="items" />
+  <div class="min-h-screen bg-gradient-to-r from-blue-300 to-blue-600 flex items-center justify-center">
+    <UAccordion class="w-full max-w-4xl bg-white p-8 shadow-lg rounded-lg text-lg text-gray-800" :items="items" />
+  </div>
 </template>
 <script setup lang="ts">
 const items = [
