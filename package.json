@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@heroicons/vue": "^2.1.5",
     "@nuxt/content": "^2.13.2",
     "@nuxt/image": "^1.8.0",
     "@nuxt/ui": "^2.18.4",
