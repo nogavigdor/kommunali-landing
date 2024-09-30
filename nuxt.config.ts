@@ -7,7 +7,7 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ["@nuxt/ui", "@nuxt/content", '@nuxt/image',   'nuxt-gtag',  '@nuxtjs/google-analytics' ],
+  modules: ["@nuxt/ui", "@nuxt/content", '@nuxt/image',   'nuxt-gtag' ],
   typescript: {
     typeCheck: true,
   },
