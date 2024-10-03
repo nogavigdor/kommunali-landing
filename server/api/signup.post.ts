@@ -34,6 +34,8 @@ export default defineEventHandler(async (event) => {
   const dc = apiKey.split('-')[1]; // The data center (for example: us20) is the part after the dash in the API key
   const mailchimpUrl = `https://${dc}.api.mailchimp.com/3.0/lists/${listId}/members/`;
 
+  console.log(`Data center: ${dc}`);
+  console.log(`Mailchimp URL: ${mailchimpUrl}`);
   // Mailchimp API request body
   const data = {
     email_address: email,
@@ -42,7 +44,7 @@ export default defineEventHandler(async (event) => {
       FNAME: name || '',
     },
   };
-
+  console.log("Sending to Mailchimp:", JSON.stringify(data, null, 2));
   try {
     // Send the request to Mailchimp using $fetch
     const response = await $fetch<MailchimpResponse>(mailchimpUrl, {
@@ -54,21 +56,33 @@ export default defineEventHandler(async (event) => {
       body: JSON.stringify(data),
     });
 
+      // Log the entire response for debugging
+      console.log("Mailchimp response:", response);
     // Check the response and handle potential errors
     if (response.status >= 400) {
-      return {
-        statusCode: response.status,
-        message: response.detail || "Failed to subscribe.",
-      };
+      console.log("Mailchimp response error:", response);
+      
+      // Check if the email already exists in the list
+      if (response.status === 400 && response.detail?.includes("is already a list member")) {
+        return { statusCode: 400, message: "This email is already subscribed." };
+      }
+      
+      return { statusCode: response.status, message: response.detail || "Failed to subscribe." };
     }
 
     return { message: "The signup was successful" };
-  } catch (error) {
+  } catch (error:any) {
     console.error("Error during Mailchimp signup:", error);
 
+    // Check for Mailchimp-specific errors
+    if (error.status === 400 && error.data?.detail?.includes("is already a list member")) {
+      return { statusCode: 400, message: "This email is already subscribed." };
+    }
+
+    // For other types of errors
     return {
-      statusCode: 500,
-      message: "An error occurred while subscribing.",
-    };
+      statusCode: error.status || 500,
+      message: error.data?.detail || "An error occurred while processing your request. Please try again later.",
+    };  
   }
 });

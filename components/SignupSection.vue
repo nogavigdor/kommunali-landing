@@ -44,22 +44,24 @@ const message = ref("");
 const isError = ref(false);
 
 const submitForm = async () => {
+  
+  // Reset state before each submission
+  isError.value = false;
+  message.value = "";
+
   try {
-    const  { data, error }  = (await useFetch<ApiResponse>("/api/signup", {
+    const  response  = (await $fetch<ApiResponse>("/api/signup", {
       method: "POST",
       body: form.value,
     })) ;
 
-    if (error.value) {
-      throw new Error(error.value.message || "Failed to submit");
-    }
-    
+
     // Accessing the message from the data response
-    message.value = data.value?.message || "Successfully signed up!";
+    message.value = response.message || "Successfully signed up!";
     isError.value = false;
   } catch (error) {
     console.error("Error:", error);
-    message.value = "Error submitting form";
+    message.value = error instanceof Error ? error.message : "Error submitting form";
     isError.value = true;
   }
 };
