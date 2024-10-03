@@ -1,31 +1,24 @@
 import { defineEventHandler, readBody } from "h3";
-import mongoose from "mongoose";
 
-// Ensure MongoDB connection is made once
-if (mongoose.connection.readyState === 0) {
-  console.log("MongoDB URI:", process.env.MONGO_URI);
-  mongoose.connect(
- 
-
-    process.env.MONGO_URI || "mongodb://localhost:27017/h3",
-    {
-      //useNewUrlParser: true,
-     // useUnifiedTopology: true,
-    }
-  );
+// Define the expected response type from Mailchimp
+interface MailchimpResponse {
+  status: number;
+  detail?: string;
 }
 
-// Signup Schema
-const SignupSchema = new mongoose.Schema({
-  name: { type: String, required: false },
-  email: { type: String, required: true, unique: true },
-  signUpDate: { type: Date, default: Date.now },
-});
-
-// Model definition
-const Signup = mongoose.models.Signup || mongoose.model("Signup", SignupSchema);
+// Mailchimp details
+const apiKey = process.env.MAILCHIMP_API_KEY;
+const listId = process.env.MAILCHIMP_LIST_ID;
 
 export default defineEventHandler(async (event) => {
+  // Check if apiKey and listId are set
+  if (!apiKey || !listId) {
+    return {
+      statusCode: 500,
+      message: "Mailchimp API key or list ID is not set.",
+    };
+  }
+
   const body = await readBody(event);
   const { email, name } = body;
 
@@ -37,33 +30,45 @@ export default defineEventHandler(async (event) => {
     };
   }
 
+  // Prepare the Mailchimp API URL
+  const dc = apiKey.split('-')[1]; // The data center (for example: us20) is the part after the dash in the API key
+  const mailchimpUrl = `https://${dc}.api.mailchimp.com/3.0/lists/${listId}/members/`;
+
+  // Mailchimp API request body
+  const data = {
+    email_address: email,
+    status: "subscribed", // available options: "subscribed", "pending", or "unsubscribed"
+    merge_fields: {
+      FNAME: name || '',
+    },
+  };
+
   try {
-    const newSignup = new Signup({ email, name });
-    await newSignup.save();
-    return { message: "The signup was successful" };
-  } catch (error) {
-    // Check if the error is an instance of Error
-    if (error instanceof Error) {
-      console.error("Error during signup:", error.message); // Log the error message for debugging
+    // Send the request to Mailchimp using $fetch
+    const response = await $fetch<MailchimpResponse>(mailchimpUrl, {
+      method: "POST",
+      headers: {
+        Authorization: `Basic ${Buffer.from(`anystring:${apiKey}`).toString("base64")}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
 
-      let message = "A failed to signup occurred";
-
-      // Check for MongoDB unique constraint errors (e.g., duplicate emails)
-      if (error.message.includes("E11000")) {
-        message = "Email already exists";
-      }
-
+    // Check the response and handle potential errors
+    if (response.status >= 400) {
       return {
-        statusCode: 500,
-        message,
-      };
-    } else {
-      // Handle other types of errors that are not instances of Error
-      return {
-        statusCode: 500,
-        message: "An unknown error occurred",
+        statusCode: response.status,
+        message: response.detail || "Failed to subscribe.",
       };
     }
+
+    return { message: "The signup was successful" };
+  } catch (error) {
+    console.error("Error during Mailchimp signup:", error);
+
+    return {
+      statusCode: 500,
+      message: "An error occurred while subscribing.",
+    };
   }
 });
-
