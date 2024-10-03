@@ -30,7 +30,6 @@
     </div>
   </div>
 </template>
-
 <script setup lang="ts">
 interface ApiResponse {
   message: string;
@@ -46,12 +45,17 @@ const isError = ref(false);
 
 const submitForm = async () => {
   try {
-    const res = (await $fetch("/api/signup", {
+    const  { data, error }  = (await useFetch<ApiResponse>("/api/signup", {
       method: "POST",
       body: form.value,
-    })) as ApiResponse;
+    })) ;
 
-    message.value = res.message;
+    if (error.value) {
+      throw new Error(error.value.message || "Failed to submit");
+    }
+    
+    // Accessing the message from the data response
+    message.value = data.value?.message || "Successfully signed up!";
     isError.value = false;
   } catch (error) {
     console.error("Error:", error);
