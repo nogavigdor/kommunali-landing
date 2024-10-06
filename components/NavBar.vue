@@ -1,5 +1,7 @@
 <template>
-  <nav class="fixed z-50 flex space-x-12 w-full bg-gray-100 py-4 px-6 font-bold">
+  <nav
+    class="fixed z-50 flex space-x-12 w-full bg-gray-100 py-4 px-6 font-bold"
+  >
     <!-- Smooth scroll links for sections if on index page -->
     <a
       v-if="!isBlogPage"
@@ -73,6 +75,10 @@
     <NuxtLink to="/blog" :class="{ active: isBlogPage }" class="nav-link"
       >Blog</NuxtLink
     >
+    <!-- Day/Night Toggle Switch -->
+    <div class="ml-auto">
+      <DayNightSwitch />
+    </div>
   </nav>
 </template>
 
@@ -89,9 +95,8 @@ const handleScroll = () => {
   updateScrollLogic();
 };
 
-
 const updateScrollLogic = () => {
-  const navBarHeight = document.querySelector('nav')?.offsetHeight || 0;
+  const navBarHeight = document.querySelector("nav")?.offsetHeight || 0;
 
   // Check if the user is on the blog page
   isBlogPage.value = route.path.startsWith("/blog");
@@ -101,33 +106,38 @@ const updateScrollLogic = () => {
     window.addEventListener("scroll", () => {
       const sections = {
         hero: document.getElementById("hero")?.getBoundingClientRect().top ?? 0,
-        about: document.getElementById("about")?.getBoundingClientRect().top ?? 0,
+        about:
+          document.getElementById("about")?.getBoundingClientRect().top ?? 0,
         faq: document.getElementById("faq")?.getBoundingClientRect().top ?? 0,
-        signup: document.getElementById("signup")?.getBoundingClientRect().top ?? 0,
+        signup:
+          document.getElementById("signup")?.getBoundingClientRect().top ?? 0,
       };
 
       const scrollTop = window.scrollY + navBarHeight;
-      const screenHeight = window.innerHeight; 
+      const screenHeight = window.innerHeight;
 
-        // Logging scroll details
-  console.log('the sections top are:', sections);
-  console.log(`Scroll Position: ${window.scrollY}`);
-  console.log(`Scroll Top (with navbar height): ${scrollTop}`);
-  console.log(`Screen Height: ${screenHeight}`);
+      // Logging scroll details
+      console.log("the sections top are:", sections);
+      console.log(`Scroll Position: ${window.scrollY}`);
+      console.log(`Scroll Top (with navbar height): ${scrollTop}`);
+      console.log(`Screen Height: ${screenHeight}`);
 
-  if (sections.hero < navBarHeight && sections.about > navBarHeight) {
-      currentSection.value = "hero";
-      console.log("Active Section: Hero");
-    } else if (sections.about < navBarHeight && sections.faq > navBarHeight) {
-      currentSection.value = "about";
-      console.log("Active Section: About");
-    } else if (sections.faq < navBarHeight && sections.signup > navBarHeight) {
-      currentSection.value = "faq";
-      console.log("Active Section: FAQ");
-    } else if (sections.signup < navBarHeight) {
-      currentSection.value = "signup";
-      console.log("Active Section: Signup");
-    }
+      if (sections.hero < navBarHeight && sections.about > navBarHeight) {
+        currentSection.value = "hero";
+        console.log("Active Section: Hero");
+      } else if (sections.about < navBarHeight && sections.faq > navBarHeight) {
+        currentSection.value = "about";
+        console.log("Active Section: About");
+      } else if (
+        sections.faq < navBarHeight &&
+        sections.signup > navBarHeight
+      ) {
+        currentSection.value = "faq";
+        console.log("Active Section: FAQ");
+      } else if (sections.signup < navBarHeight) {
+        currentSection.value = "signup";
+        console.log("Active Section: Signup");
+      }
     });
   }
 };
@@ -135,8 +145,8 @@ const updateScrollLogic = () => {
 // Run scroll logic when component is mounted
 onMounted(() => {
   updateScrollLogic();
-   // Add scroll event listener
-   window.addEventListener("scroll", handleScroll);
+  // Add scroll event listener
+  window.addEventListener("scroll", handleScroll);
 });
 
 // Cleanup scroll listener when component is unmounted
