@@ -75,6 +75,12 @@
     <NuxtLink to="/blog" :class="{ active: isBlogPage }" class="nav-link"
       >Blog</NuxtLink
     >
+
+    <!-- Hamburger Menu for Mobile -->
+    <div class="md:hidden">
+      <HamburgerMenu />
+    </div>
+
     <!-- Day/Night Toggle Switch -->
     <div class="ml-auto">
       <DayNightSwitch />
