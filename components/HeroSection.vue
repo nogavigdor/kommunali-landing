@@ -20,12 +20,12 @@
 </template>
 
 <script setup>
-import hero1 from "@/assets/hero1.webp";
-import hero2 from "@/assets/hero2.webp";
-import hero3 from "@/assets/hero3.webp";
-import hero4 from "@/assets/hero4.webp";
-import hero5 from "@/assets/hero5.webp";
-import hero6 from "@/assets/hero6.webp";
+import hero1 from "@/assets/hero1.jpg";
+import hero2 from "@/assets/hero2.png";
+import hero3 from "@/assets/hero3.png";
+import hero4 from "@/assets/hero4.jpg";
+import hero5 from "@/assets/hero5.png";
+import hero6 from "@/assets/hero6.jpg";
 
 const items = [hero1, hero2, hero3, hero4, hero5, hero6];
 
