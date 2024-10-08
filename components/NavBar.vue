@@ -80,11 +80,6 @@
     <div class="md:hidden">
       <HamburgerMenu />
     </div>
-
-    <!-- Day/Night Toggle Switch -->
-    <div class="ml-auto">
-      <DayNightSwitch />
-    </div>
   </nav>
 </template>
 

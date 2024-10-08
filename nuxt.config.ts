@@ -12,14 +12,16 @@ export default defineNuxtConfig({
     "@nuxt/content",
     "@nuxt/image",
     "nuxt-gtag",
-    "@nuxt-themes/tokens",
+    // "@nuxt-themes/tokens",
   ],
+  /*
   colorMode: {
     preference: "system", // 'light' | 'dark' | 'system'
     fallback: "light",
     classPrefix: "",
     classSuffix: "",
   },
+  */
   typescript: {
     typeCheck: true,
   },

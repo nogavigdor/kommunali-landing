@@ -1,6 +1,12 @@
 <template>
   <div>
-    <NavBar />
+    <div class="flex content-between">
+      <NavBar />
+      <!-- Day/Night Toggle Switch -->
+      <div class="ml-auto">
+        <DarkLightSwitch />
+      </div>
+    </div>
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>

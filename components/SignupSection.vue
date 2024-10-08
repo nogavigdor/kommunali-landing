@@ -1,7 +1,11 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-b from-green-400 to-blue-500 flex items-center justify-center">
+  <div
+    class="min-h-screen bg-gradient-to-b from-green-400 to-blue-500 flex items-center justify-center"
+  >
     <div class="max-w-lg w-full bg-white p-8 rounded-lg shadow-lg my-12">
-      <h2 class="text-4xl font-bold mb-6 text-center text-gray-800">Sign Up for Updates</h2>
+      <h2 class="text-4xl font-bold mb-6 text-center text-gray-800">
+        Sign Up for Updates
+      </h2>
       <form @submit.prevent="submitForm">
         <!-- Name Input -->
         <input
@@ -19,12 +23,19 @@
           required
         />
         <!-- Submit Button -->
-        <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg font-semibold transition-all duration-300">
+        <button
+          type="submit"
+          class="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg font-semibold transition-all duration-300"
+        >
           Sign Up
         </button>
       </form>
       <!-- Message -->
-      <p v-if="message" class="mt-4 text-center" :class="{ 'text-red-500': isError, 'text-green-500': !isError }">
+      <p
+        v-if="message"
+        class="mt-4 text-center"
+        :class="{ 'text-red-500': isError, 'text-green-500': !isError }"
+      >
         {{ message }}
       </p>
     </div>
@@ -44,24 +55,23 @@ const message = ref("");
 const isError = ref(false);
 
 const submitForm = async () => {
-  
   // Reset state before each submission
   isError.value = false;
   message.value = "";
 
   try {
-    const  response  = (await $fetch<ApiResponse>("/api/signup", {
+    const response = await $fetch<ApiResponse>("/api/signup", {
       method: "POST",
       body: form.value,
-    })) ;
-
+    });
 
     // Accessing the message from the data response
     message.value = response.message || "Successfully signed up!";
     isError.value = false;
   } catch (error) {
     console.error("Error:", error);
-    message.value = error instanceof Error ? error.message : "Error submitting form";
+    message.value =
+      error instanceof Error ? error.message : "Error submitting form";
     isError.value = true;
   }
 };
