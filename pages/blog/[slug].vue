@@ -1,23 +1,20 @@
 <template>
   <NuxtLayout>
-    <article v-if="post && post.body">
-      <h1>{{ post.title }}</h1>
-      <p>{{ post.excerpt }}</p>
-      <ContentDoc />
-    </article>
-    <div v-else>
-      <p>No post found.</p>
+    <div class="pt-24 pb-24 min-h-screen">
+      <article v-if="post && post.body">
+        <h1>{{ post.title }}</h1>
+
+        <ContentDoc />
+      </article>
+      <div v-else>
+        <p>No post found.</p>
+      </div>
     </div>
   </NuxtLayout>
 </template>
 
 <script setup>
 import { parseJsonText } from "typescript";
-
-// Set the page layout to 'blog'
-definePageMeta({
-  layout: "blog",
-});
 
 const route = useRoute();
 const { data: post } = await useAsyncData(
