@@ -6,17 +6,17 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="my-20">
+    <section id="about">
       <AboutSection />
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" class="my-20">
+    <section id="faq">
       <FaqSection />
     </section>
 
     <!-- Signup Section -->
-    <section id="signup" class="my-20">
+    <section id="signup">
       <SignupSection />
     </section>
 
