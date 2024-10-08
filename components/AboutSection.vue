@@ -5,7 +5,7 @@
     <div
       class="max-w-4xl mx-auto px-6 py-12 bg-white text-black rounded-lg shadow-lg my-12"
     >
-      <h2 class="text-4xl font-bold mb-6 text-center">About Communali</h2>
+      <h2 class="text-4xl font-bold mb-6 text-center">About Kommunali</h2>
       <p class="text-lg mb-4">
         Kommunali is more than just an app—it's a way to connect with your
         neighborhood, discover hidden treasures, and contribute to a sustainable
