@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="flex content-between">
-      <NavBar />
+      <NavBar class="hidden md:block"  />
+    <!-- Hamburger Menu for Mobile -->
+      <HamburgerMenu class="md:hidden"/>
+
       <!-- Day/Night Toggle Switch -->
       <div class="ml-auto">
         <DarkLightSwitch />
