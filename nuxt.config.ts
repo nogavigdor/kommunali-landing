@@ -12,16 +12,16 @@ export default defineNuxtConfig({
     "@nuxt/content",
     "@nuxt/image",
     "nuxt-gtag",
-    // "@nuxt-themes/tokens",
+    "@nuxtjs/color-mode",
   ],
-  /*
+  
   colorMode: {
     preference: "system", // 'light' | 'dark' | 'system'
     fallback: "light",
     classPrefix: "",
     classSuffix: "",
   },
-  */
+  
   typescript: {
     typeCheck: true,
   },
@@ -33,4 +33,7 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: "2024-09-04",
+  devtools: {
+    enabled: true,
+  },
 });
