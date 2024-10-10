@@ -2,6 +2,7 @@
 title: "How Kommunali Brings Communities Together Through Second-Hand Shopping"
 excerpt: "Discover how Communali fosters community bonding by making second-hand shopping easier and more accessible."
 date: 2024-08-28
+author: Noga Vigdor
 ---
 
 In today's world, people are looking for ways to live more sustainably and build stronger connections with those around them. Communali helps with both by creating a platform that encourages second-hand shopping in your local neighborhood.
