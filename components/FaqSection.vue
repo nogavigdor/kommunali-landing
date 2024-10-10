@@ -1,11 +1,40 @@
 <template>
   <div
-    class="min-h-screen bg-gradient-to-r from-blue-300 to-blue-600 flex items-center justify-center"
+    class="min-h-screen mx-auto px-24 py-24  bg-gradient-to-r from-blue-300 to-blue-600 flex flex-col items-center justify-center"
   >
-    <UAccordion
-      class="w-full max-w-4xl bg-white p-8 shadow-lg rounded-lg text-lg text-gray-800"
+  <h2 class="text-4xl mb-6">FAQ</h2>
+  <UAccordion
+      class="w-full max-w-4xl  bg-white p-6 shadow-lg rounded-lg text-gray-800"
       :items="items"
-    />
+      closeOthers
+    >
+      <template #default="{ item, open }">
+        <div class="flex flex-col border-b border-gray-200 p-4 cursor-pointer">
+          <!-- Label and Arrow Container -->
+          <div class="flex items-center">
+            <!-- Icon Container with Gradient and Shadow -->
+            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg flex items-center justify-center">
+              <UIcon :name="item.icon" class="w-6 h-6 text-white" />
+            </div>
+            <!-- Label and Arrow -->
+            <div class="flex-1 ml-4 flex justify-between items-center">
+              <h3 class="text-lg font-semibold text-gray-900">{{ item.label }}</h3>
+              <!-- Rotating Arrow -->
+              <UIcon
+                name="i-heroicons-chevron-down-20-solid"
+                class="w-6 h-6 text-gray-600 transition-transform duration-300"
+                :class="{ 'rotate-180': open }"
+              />
+            </div>
+          </div>
+
+         
+        </div>
+      </template>
+      <template #item="{ item }">
+        <p class="mt-2 ml-16 text-gray-600 text-[16px]">{{ item.content }}</p>
+        </template>
+    </UAccordion>
   </div>
 </template>
 <script setup lang="ts">
