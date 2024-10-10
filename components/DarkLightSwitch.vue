@@ -3,7 +3,7 @@
     @click="toggleDarkMode"
     class="p-2 rounded-full border-2 border-gray-300 dark:border-gray-600 transition-colors duration-300"
   >
-    {{ isDarkMode ? "☀️" : "🌙" }}
+    <span>{{ isDarkMode ? "☀️" : "🌙" }}</span>
   </button>
 </template>
 
