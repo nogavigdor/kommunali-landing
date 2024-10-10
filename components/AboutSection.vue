@@ -1,6 +1,6 @@
 <template>
   <div
-    class="min-h-screen bg-gradient-to-b from-green-400 to-blue-500 text-white flex items-center justify-center"
+    class="min-h-screen px-24 py-24 bg-gradient-to-b from-green-400 to-blue-500 text-white flex items-center justify-center"
   >
     <div
       class="max-w-4xl mx-auto px-6 py-12 bg-white text-black rounded-lg shadow-lg my-12"
