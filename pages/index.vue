@@ -34,6 +34,11 @@ import {vIntersectionObserver} from "@vueuse/components";
 
 const currentSection = useState("currentSection");
 
+// This function handles visibility changes for sections of the page using Intersection Observer.
+// It checks if a section is visible in the viewport  and if so, updates the global state `currentSection` 
+// with the ID of the visible section. This is used to track the current section and update the the active nav link 
+//(highlight it).
+
 const intersectionHandler = (([{target, isIntersecting}]: IntersectionObserverEntry[]) => {
   // console.log("entry", target);
   // console.log(`The ${target.parentNode?.id} section is ${isIntersecting ? 'visible' : 'not visible'}`);
