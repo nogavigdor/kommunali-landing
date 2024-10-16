@@ -1,10 +1,10 @@
 <template>
   <div
-    class="min-h-screen mx-auto px-24 py-24  bg-gradient-to-r from-blue-300 to-blue-600 flex flex-col items-center justify-center"
+    class="min-h-screen mx-auto px-24 py-24 bg-gradient-to-r from-blue-300 to-blue-600 flex flex-col items-center justify-center"
   >
-  <h2 class="text-4xl mb-6">FAQ</h2>
-  <UAccordion
-      class="w-full max-w-4xl  bg-white p-6 shadow-lg rounded-lg text-gray-800"
+    <h2 class="text-4xl mb-6">FAQ</h2>
+    <UAccordion
+      class="w-full max-w-4xl bg-white p-6 shadow-lg rounded-lg text-gray-800"
       :items="items"
       closeOthers
     >
@@ -13,12 +13,16 @@
           <!-- Label and Arrow Container -->
           <div class="flex items-center">
             <!-- Icon Container with Gradient and Shadow -->
-            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg flex items-center justify-center">
+            <div
+              class="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg flex items-center justify-center"
+            >
               <UIcon :name="item.icon" class="w-6 h-6 text-white" />
             </div>
             <!-- Label and Arrow -->
             <div class="flex-1 ml-4 flex justify-between items-center">
-              <h3 class="text-lg font-semibold text-gray-900">{{ item.label }}</h3>
+              <h3 class="text-lg font-semibold text-gray-900">
+                {{ item.label }}
+              </h3>
               <!-- Rotating Arrow -->
               <UIcon
                 name="i-heroicons-chevron-down-20-solid"
@@ -27,36 +31,34 @@
               />
             </div>
           </div>
-
-         
         </div>
       </template>
       <template #item="{ item }">
         <p class="mt-2 ml-16 text-gray-600 text-[16px]">{{ item.content }}</p>
-        </template>
+      </template>
     </UAccordion>
   </div>
 </template>
 <script setup lang="ts">
 const items = [
   {
-    label: "What is Communali?",
+    label: "What is Kommunali?",
     icon: "i-heroicons-information-circle",
     // defaultOpen: true,
     content:
-      "Communali is a community-driven platform that enables users to buy, sell, or give away second-hand items within their local neighborhoods. It promotes sustainability by encouraging users to explore nearby deals and connect with their community.",
+      "Kommunali is a community-driven platform that enables users to buy, sell, or give away second-hand items within their local neighborhoods. It promotes sustainability by encouraging users to explore nearby deals and connect with their community.",
   },
   {
     label: "How do I sign up?",
-    icon: "i-heroicons-user-add",
+    icon: "i-heroicons-pencil-square",
     content:
-      "Signing up for Communali is easy! Just head to the Sign-Up section on our homepage, enter your email, and create an account. Once registered, you can start browsing, listing items, and connecting with your neighbors.",
+      "Signing up for Kommunali is easy! Just head to the Sign-Up section on our homepage, enter your email, and create an account. Once registered, you can start browsing, listing items, and connecting with your neighbors.",
   },
   {
-    label: "Is Communali free to use?",
+    label: "Is Kommunali free to use?",
     icon: "i-heroicons-currency-dollar",
     content:
-      "Yes, Communali is completely free for users to browse, post items, and engage with the community. Some premium features may be introduced in the future to enhance the user experience, but the core functionalities will always be free.",
+      "Yes, Kommunali is completely free for users to browse, post items, and engage with the community. Some premium features may be introduced in the future to enhance the user experience, but the core functionalities will always be free.",
   },
   {
     label: "How do I list an item for sale or giveaway?",
@@ -66,15 +68,15 @@ const items = [
   },
   {
     label: "How can I contact a seller or buyer?",
-    icon: "i-heroicons-chat",
+    icon: "i-heroicons-solid-chat",
     content:
-      'Communali provides an in-app messaging feature for communication. Simply find the item you’re interested in, and click "Contact Seller" to start a conversation. This helps maintain privacy while facilitating smooth transactions.',
+      'Kommunali provides an in-app messaging feature for communication. Simply find the item you’re interested in, and click "Contact Seller" to start a conversation. This helps maintain privacy while facilitating smooth transactions.',
   },
   {
     label: "Is there a delivery option?",
     icon: "i-heroicons-truck",
     content:
-      "Communali is designed to focus on local transactions, encouraging in-person pickups to reduce carbon footprints. However, users can arrange deliveries if both parties agree.",
+      "Kommunali is designed to focus on local transactions, encouraging in-person pickups to reduce carbon footprints. However, users can arrange deliveries if both parties agree.",
   },
   {
     label: "How do I find items near me?",
