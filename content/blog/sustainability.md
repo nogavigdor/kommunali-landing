@@ -1,7 +1,10 @@
 ---
 title: "Sustainability and the Circular Economy with Kommunali"
 excerpt: "Explore how Communali supports a sustainable lifestyle by encouraging second-hand shopping and reducing waste."
-date: 2024-08-30
+thumbnail: "sustainability.webp"
+image: "sustainability.webp"
+date: "2024-08-30"
+author: "Noga Vigdor"
 ---
 
 At Kommunali, we're not just about second-hand shopping — we’re part of a bigger movement toward sustainability and the circular economy.

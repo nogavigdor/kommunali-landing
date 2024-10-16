@@ -1,7 +1,10 @@
 ---
 title: "Explore Your Neighborhood With Kommunali's Interactive Map"
 excerpt: "Learn how to navigate the Communali app's map to discover items available for trade or sale in your community."
-date: 2024-08-29
+thumbnail: "using-the-map.webp"
+image: "using-the-map.webp"
+date: "2024-08-29"
+author: "Noga Vigdor"
 ---
 
 One of Kommunali's most exciting features is the **interactive map**, where each house in your neighborhood becomes a mini-shop. You can browse what your neighbors are giving away or selling, and find treasures just a few steps away from your door.

@@ -1,7 +1,9 @@
 ---
 title: "How Kommunali Brings Communities Together Through Second-Hand Shopping"
 excerpt: "Discover how Communali fosters community bonding by making second-hand shopping easier and more accessible."
-date: 2024-08-28
+thumbnail: "community-benefits.jpg"
+image: "community-benefits.jpg"
+date: "2024-08-28"
 author: Noga Vigdor
 ---
 
