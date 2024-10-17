@@ -113,11 +113,12 @@ watch(isBlogPage, () => {
 
 .nav-link.active {
   color: #ffffff;
-  background-color: #007bff;
+  background-color: #1A237E;
 }
 
 .nav-link:hover {
-  background-color: #f0f0f0;
+  background-color: #1A237E;
+  color: #ffffff;
 }
 
 .currentSection {
