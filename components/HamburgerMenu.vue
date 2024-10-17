@@ -1,8 +1,11 @@
 <template>
   <div>
     <!-- Hamburger button using Heroicons Bars3Icon -->
-    <button @click="toggleMenu" class="p-4">
+    <button v-if="!isOpen" @click="toggleMenu" class="fixed top-4 left-4 p-4 z-30">
       <Bars3Icon class="h-8 w-8 text-gray-700" />
+    </button>
+    <button v-if="isOpen" @click="toggleMenu" class="fixed top-4 left-4 z-20 p-4">
+      <XMarkIcon class="h-8 w-8 text-gray-700" />
     </button>
 
     <!-- Mobile navigation links with transition -->
@@ -13,16 +16,16 @@
       >
         <ul class="text-center space-y-8">
           <li @click="handleClick('#hero')">
-            <a href="#hero" class="text-xl font-semibold">Home</a>
+            <NuxtLink @click="toggleMenu" href="/#hero" class="text-xl font-semibold">Home</NuxtLink>
           </li>
           <li @click="handleClick('#about')">
-            <a href="#about" class="text-xl font-semibold">About</a>
+            <NuxtLink to="/#about" @click="toggleMenu" class="text-xl font-semibold">About</NuxtLink>
           </li>
           <li @click="handleClick('#faq')">
-            <a href="#faq" class="text-xl font-semibold">FAQ</a>
+            <NuxtLink href="/#faq" class="text-xl font-semibold">FAQ</NuxtLink>
           </li>
           <li @click="handleClick('#signup')">
-            <a href="#signup" class="text-xl font-semibold">Sign Up</a>
+            <NuxtLink href="/#signup" class="text-xl font-semibold">Sign Up</NuxtLink>
           </li>
           <li @click="handleBlogClick">
             <NuxtLink to="/blog" class="text-xl font-semibold">Blog</NuxtLink>
@@ -36,7 +39,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useRoute } from 'vue-router'; // Import useRoute to detect current route
-import { Bars3Icon } from '@heroicons/vue/24/outline'; // Importing from Heroicons v2
+import { XMarkIcon, Bars3Icon} from '@heroicons/vue/24/outline'; // Importing from Heroicons v2
 
 const nuxtApp = useNuxtApp();
 
@@ -52,9 +55,9 @@ const toggleMenu = () => {
 // Smooth scrolling to sections and closing the menu with transition
 const handleClick = (target) => {
   // If not on the blog page, perform smooth scrolling
-  if (!route.path.startsWith('/blog')) {
+
     nuxtApp.$scrollTo(target, { duration: 800, easing: 'ease-in-out' }); // Smooth scrolling with ease
-  }
+  
   // Close the menu after clicking
   isOpen.value = false;
 };
