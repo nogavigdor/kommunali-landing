@@ -10,7 +10,7 @@
     >
       <div class="w-full flex items-start justify-center relative">
           <!-- Call to Action Text for each slide -->
-          <div class="absolute pt-56 h-full top-10 text-center text-white text-5xl font-bold p-4 bg-black bg-opacity-50 w-full z-10">
+          <div class="absolute pt-56 h-full top-10 text-center text-white text-5xl font-bold p-4 bg-black bg-opacity-50 w-full z-9">
             {{ item.text || 'Loading...' }}
         </div>
         <img
