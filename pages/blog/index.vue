@@ -3,7 +3,7 @@
     <section class="blog-preview-section">
       <h2 class="text-3xl font-bold text-gray-900 mb-6">Latest News</h2>
       <div v-if="posts && posts.length" class="blog-list">
-        <article v-for="(post, index) in posts" :key="index" class="blog-item">
+        <article v-for="(post, index) in posts" :key="index" class="blog-item flex flex-col md:flex-row ">
           <img
             :src="`/images/blog-images/${post.thumbnail}`"
             alt="Post Thumbnail"
