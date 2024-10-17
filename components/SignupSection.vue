@@ -1,6 +1,6 @@
 <template>
   <div
-    class="min-h-screen bg-gradient-to-b from-green-400 to-blue-500 flex items-center justify-center"
+    class="min-h-screen bg-gradient-to-b from-secondary to-primary flex items-center justify-center"
   >
     <div class="max-w-lg w-full bg-white p-8 rounded-lg shadow-lg my-12">
       <h2 class="text-4xl font-bold mb-6 text-center text-gray-800">
@@ -25,9 +25,9 @@
         <!-- Submit Button -->
         <button
           type="submit"
-          class="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg font-semibold transition-all duration-300"
+          class="w-full bg-accent hover:bg-hoverAccent text-grary-800 text-2xl py-3 rounded-lg font-semibold transition-all duration-300"
         >
-          Sign Up
+          Sign Up Now
         </button>
       </form>
       <!-- Message -->
