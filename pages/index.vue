@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div  >
     <!-- Hero Section -->
     <section id="hero">
       <HeroSection v-intersection-observer="[intersectionHandler, { threshold: 0.4}]" />
@@ -11,7 +11,7 @@
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq">
+    <section  id="faq">
       <FaqSection v-intersection-observer="[intersectionHandler, { threshold: 0.4}]" />
     </section>
 
@@ -22,7 +22,7 @@
 
     <button
       @click="$scrollTo('#hero', 1000, { easing: 'ease' })"
-      class="fixed bottom-4 right-4 p-4 bg-blue-500 text-white rounded-full"
+      class="fixed bottom-4 right-4 p-4 bg-accent text-gray-800 font-semibold rounded-full"
     >
       Scroll to Top
     </button>
