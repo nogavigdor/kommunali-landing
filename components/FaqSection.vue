@@ -1,6 +1,6 @@
 <template>
   <div
-    class="min-h-screen mx-auto px-24 py-24 bg-gradient-to-r from-blue-300 to-blue-600 flex flex-col items-center justify-center"
+    class="min-h-screen mx-auto px-24 py-24 bg-gradient-to-r from-primary to-blue-secondary flex flex-col items-center justify-center"
   >
     <h2 class="text-4xl mb-6">FAQ</h2>
     <UAccordion
@@ -14,7 +14,7 @@
           <div class="flex items-center">
             <!-- Icon Container with Gradient and Shadow -->
             <div
-              class="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg flex items-center justify-center"
+              class="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-secondary shadow-lg flex items-center justify-center"
             >
               <UIcon :name="item.icon" class="w-6 h-6 text-white" />
             </div>
