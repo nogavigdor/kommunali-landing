@@ -25,7 +25,7 @@
         <!-- Submit Button -->
         <button
           type="submit"
-          class="w-full bg-accent hover:bg-hoverAccent text-grary-800 text-2xl py-3 rounded-lg font-semibold transition-all duration-300"
+          class="w-full bg-accent hover:bg-hoverAccent text-gray-800 text-2xl py-3 rounded-lg font-semibold transition-all duration-300"
         >
           Sign Up Now
         </button>
